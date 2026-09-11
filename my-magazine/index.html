@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주간 아티클 & 매거진</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 상단 헤더 & 네비게이션 -->
+    <header class="navbar">
+        <div class="logo">WEEKLY ARTICLE</div>
+        <nav>
+            <button class="nav-btn active" data-target="article-section">📰 아티클 목록</button>
+            <button class="nav-btn highlight" data-target="upload-section">➕ 새 글 업로드</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <!-- 탭 1: 아티클/기사 목록 탭 -->
+        <section id="article-section" class="tab-content active">
+            <div class="section-header">
+                <h2>최신 기사 & 콘텐츠</h2>
+                <p>매주 새롭게 업로드되는 콘텐츠를 확인하세요.</p>
+            </div>
+            
+            <div id="article-grid" class="article-grid">
+                <!-- 동적으로 생성되는 카드가 위치합니다 -->
+            </div>
+        </section>
+
+        <!-- 탭 2: 업로드 탭 -->
+        <section id="upload-section" class="tab-content">
+            <div class="form-card">
+                <h2>새 아티클 업로드</h2>
+                <p>대표 사진 및 본문 이미지와 함께 콘텐츠를 등록해 보세요.</p>
+                
+                <form id="article-form">
+                    <div class="form-group">
+                        <label for="title">기사 제목</label>
+                        <input type="text" id="title" placeholder="제목을 입력하세요" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">카테고리</label>
+                        <select id="category">
+                            <option value="숏폼">숏폼</option>
+                            <option value="롱폼">롱폼</option>
+                            <option value="영화">영화</option>
+                            <option value="드라마">드라마</option>
+                            <option value="뉴스">뉴스</option>
+                            <option value="트렌드">트렌드</option>
+                            <option value="디자인">디자인</option>
+                            <option value="컬처">컬처</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">대표 썸네일 사진 선택 (선택 사항)</label>
+                        <input type="file" id="image" accept="image/*">
+                        <div id="image-preview" class="image-preview">
+                            <span>대표 이미지 미리보기</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>기사 본문 내용 (이미지 중간 삽입 가능)</label>
+                        <div class="editor-toolbar">
+                            <button type="button" id="btn-insert-img" class="tool-btn">📷 본문에 이미지 삽입</button>
+                            <input type="file" id="body-image-input" accept="image/*" style="display: none;">
+                        </div>
+                        <div id="content-editor" class="content-editor" contenteditable="true" placeholder="아티클 내용을 자유롭게 입력하세요. 텍스트 작성 중 툴바의 버튼을 눌러 중간에 이미지를 추가할 수 있습니다."></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">아티클 발행하기</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 기사 상세 보기 모달 (팝업창) -->
+    <div id="article-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close">&times;</button>
+            <div class="modal-header">
+                <span id="modal-category" class="category-tag"></span>
+                <span id="modal-date" class="modal-date"></span>
+                <h2 id="modal-title" class="modal-title"></h2>
+            </div>
+            <div id="modal-body" class="modal-body">
+                <!-- 상세보기 본문 내용이 동적으로 들어갑니다 -->
+            </div>
+            <div class="modal-footer">
+                <button id="modal-delete-btn" class="delete-btn">이 기사 삭제하기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 네비게이션 바 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #111;
+}
+
+.nav-btn {
+    padding: 0.6rem 1.2rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: #f1f3f5;
+}
+
+.nav-btn.active {
+    color: #228be6;
+}
+
+.nav-btn.highlight {
+    background-color: #228be6;
+    color: #ffffff;
+}
+
+.nav-btn.highlight:hover {
+    background-color: #1c7ed6;
+}
+
+/* 메인 컨테이너 */
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    color: #111;
+}
+
+.section-header p {
+    color: #666;
+}
+
+/* 아티클 그리드 카드 (목록용) */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.8rem;
+}
+
+.article-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card-img-wrapper {
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    background-color: #e9ecef;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #868e96;
+    margin-bottom: 0.6rem;
+}
+
+.category-tag {
+    background-color: #e7f5ff;
+    color: #1c7ed6;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #212529;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 모달 (팝업창) 디자인 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 750px;
+    max-height: 85vh;
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow-y: auto;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #adb5bd;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.modal-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #f1f3f5;
+    padding-bottom: 1rem;
+}
+
+.modal-date {
+    font-size: 0.85rem;
+    color: #868e96;
+    margin-left: 0.5rem;
+}
+
+.modal-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-top: 0.8rem;
+    color: #111;
+    line-height: 1.3;
+}
+
+.modal-body {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.modal-body img,
+.content-editor img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.2rem 0;
+    display: block;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #f1f3f5;
+    padding-top: 1rem;
+}
+
+.delete-btn {
+    background: none;
+    border: 1px solid #ffc9c9;
+    color: #fa5252;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #fff5f5;
+}
+
+/* 업로드 폼 디자인 */
+.form-card {
+    background: #ffffff;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #343a40;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #228be6;
+}
+
+.image-preview {
+    margin-top: 0.8rem;
+    width: 100%;
+    height: 180px;
+    border: 2px dashed #dee2e6;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 에디터 스타일 */
+.editor-toolbar {
+    margin-bottom: 0.5rem;
+}
+
+.tool-btn {
+    padding: 0.4rem 0.8rem;
+    background-color: #f1f3f5;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #495057;
+}
+
+.tool-btn:hover {
+    background-color: #e9ecef;
+}
+
+.content-editor {
+    min-height: 220px;
+    padding: 0.8rem;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+.content-editor:focus {
+    border-color: #228be6;
+}
+
+.content-editor[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #adb5bd;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #228be6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #1c7ed6;
+}
+
+.empty-msg {
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 3rem;
+    color: #adb5bd;
+}
